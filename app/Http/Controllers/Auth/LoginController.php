@@ -16,14 +16,14 @@ class LoginController extends Controller
 
     public function authenticate(LoginRequest $request)
     {
-        
+
         $credentials = $request->only('email', 'password');
-    
+
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route(name: 'site.dashboard'));
+            return redirect()->intended(route(name: 'habits.index'));
         }
 
         return back()->withErrors([

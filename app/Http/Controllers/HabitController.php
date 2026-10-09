@@ -12,9 +12,12 @@ class HabitController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+
+        $habits = auth()->user()->habits;
+
+        return view(view: 'dashboard', data: compact('habits'));
     }
 
     /**
@@ -35,7 +38,7 @@ class HabitController extends Controller
         auth()->user()->habits()->create($validated);
 
         return redirect()
-            ->route('site.dashboard')
+            ->route('habits.index')
             ->with('success', 'Habito criado com sucesso!');
         ;
     }
@@ -68,7 +71,7 @@ class HabitController extends Controller
         $habit->update($request->all());
 
         return redirect()
-            ->route('site.dashboard')
+            ->route('habits.index')
             ->with('success', 'Hábito atualizado com sucesso!');
     }
 
@@ -84,7 +87,7 @@ class HabitController extends Controller
         $habit->delete();
 
         return redirect()
-            ->route('site.dashboard')
+            ->route('habits.index')
             ->with('success', 'Hábito removido com sucesso!');
     }
 }

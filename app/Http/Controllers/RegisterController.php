@@ -14,7 +14,7 @@ class RegisterController extends Controller
         return view(view: 'register');
     }
 
-    public function store(RegisterRequest $request) 
+    public function store(RegisterRequest $request)
     {
         $user = User::query()->create([
             'name' => $request->input(key: 'name'),
@@ -24,6 +24,6 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('site.dashboard');
+        return redirect()->route('habits.index');
     }
 }

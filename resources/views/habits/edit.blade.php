@@ -5,7 +5,7 @@
         </h1>
 
         <section class="bg-white max-w-150 mx-auto p-6 border-2 mt-4">
-            <form action="{{ route('habit.update', $habit->id) }}" method="post" class="flex flex-col">
+            <form action="{{ route('habits.update', $habit->id) }}" method="post" class="flex flex-col">
                 @method('PUT')
                 @csrf
                 <div class="flex flex-col gap-2 mb-2">
