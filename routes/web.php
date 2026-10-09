@@ -6,16 +6,16 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [SiteController::class, 'index'])->name(name: 'site.index');
-Route::get('/login', [LoginController::class, 'index'])->name(name: 'site.login');
-Route::post('/login', [LoginController::class, 'authenticate'])->name(name: 'auth.login');
-Route::get('/register', [RegisterController::class, 'index'])->name(name: 'site.register');
-Route::post('/register', [RegisterController::class, 'store'])->name(name: 'auth.register');
+Route::get('/', [SiteController::class, 'index'])->name('site.index');
+Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('auth.login');
+Route::get('/register', [RegisterController::class, 'index'])->name('site.register');
+Route::post('/register', [RegisterController::class, 'store'])->name('auth.register');
 
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name(name: 'auth.logout');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
-    Route::resource(name: "/dashboard/habits", controller: HabitController::class)
-        ->except(methods: 'show');
+    Route::resource("/dashboard/habits", HabitController::class)->except( 'show');
+    Route::get("/dashboard/habits/config", [HabitController::class, 'settings'])->name('habits.settings');
 });
