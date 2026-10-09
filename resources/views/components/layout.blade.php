@@ -13,7 +13,9 @@
 
 <body class="bg-[#d6fbfc]">
     <x-header />
+
     {{ $slot }}
+
     <x-footer />
 </body>
 

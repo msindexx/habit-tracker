@@ -1,7 +1,7 @@
 <x-layout>
     <main class="py-19">
 
-        <section class="bg-white max-w-150 mx-auto p-6 border-2 mt-4">
+        <section class="bg-white max-w-150 mx-auto p-6 mt-4 habit-shadow-lg">
 
             <h1 class="font-bold text-3xl">
                 Faça Login
@@ -11,7 +11,11 @@
                 Insira seus dados para acessar
             </p>
 
-            <form method="POST" action="{{ route('auth.login') }}" class="flex flex-col">
+            <form
+              method="POST"
+              action="{{ route('auth.login') }}"
+              class="flex flex-col "
+            >
                 @csrf
 
                 <div class="flex flex-col gap-2 mb-2">
@@ -19,11 +23,11 @@
                         Email
                     </label>
 
-                    <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="your@email.com" 
-                    class="bg-white p-2 border-2 @error('email') border-red-500 @enderror"
+                    <input
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    class="bg-white p-2 habit-shadow @error('email') border-red-500 @enderror"
                     >
                     @error('email')
                      <p class="text-red-500 text-sm">
@@ -36,19 +40,19 @@
                     <label for="password">
                         Senha
                     </label>
-                    <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="********" 
-                    class="bg-white p-2 border-2 @error('password') border-red-500 @enderror">
+                    <input
+                    type="password"
+                    name="password"
+                    placeholder="********"
+                    class="bg-white p-2 habit-shadow @error('password') border-red-500 @enderror">
 
                     @error('password')
                      <p class="text-red-500 text-sm">
                         {{ $message }}
                     </p>
-                    @enderror                    
+                    @enderror
 
-                    <button type="submit" class="bg-white border-2 p-2">
+                    <button type="submit" class="p-2 bg-primary habit-shadow-lg">
                         Entrar
                     </button>
                 </div>
